@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DIDCO - Inspección inteligente de contenedores</title>
 
-  <!-- Enlace a Tailwind CSS CDN -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Enlace a Font Awesome CDN -->
+  <!-- Font Awesome CDN -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -16,27 +16,32 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-  
+
   <style>
-    /* Puedes agregar estilos personalizados aquí si quieres */
     .bg-primary {
       background-color: #4b0082; /* Morado oscuro */
     }
     .hover\:bg-accent:hover {
-      background-color: #6a0dad; /* Otro tono de morado */
+      background-color: #6a0dad;
     }
     .text-accent {
       color: #6a0dad;
     }
+    .header-bg {
+      background-image: url('b31ae857-9077-4e36-8d40-b9c0fbf60ede.png');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+    }
   </style>
 </head>
+
 <body class="bg-gray-950 text-white">
 
-  <!-- Aquí pega tu contenido del body que me mandaste -->
-  <section class="py-20 px-6 text-center">
-    <img src="b31ae857-9077-4e36-8d40-b9c0fbf60ede.png" alt="Logo DIDCO" class="w-40 mb-6 mx-auto" />
+  <!-- Encabezado con fondo de logo -->
+  <section class="header-bg text-center flex flex-col items-center justify-center text-white px-6">
     <h1 class="text-5xl font-bold mb-4 text-accent">DIDCO</h1>
-    <p class="text-xl mb-6 max-w-xl mx-auto text-white">
+    <p class="text-xl mb-6 max-w-xl mx-auto">
       Inspección inteligente de contenedores en tiempo real usando visión artificial
     </p>
     <a href="#contacto" class="bg-primary px-6 py-3 rounded-full hover:bg-accent transition inline-block">
@@ -44,7 +49,7 @@
     </a>
   </section>
 
-  <!-- Qué es DIDCO -->
+  <!-- ¿Qué es DIDCO? -->
   <section class="py-20 px-6 bg-gray-900 text-center">
     <h2 class="text-3xl font-semibold mb-6">¿Qué es DIDCO?</h2>
     <p class="max-w-2xl mx-auto text-lg">
@@ -120,6 +125,6 @@
   <footer class="py-6 text-center bg-gray-900 text-sm">
     © 2025 DIDCO. Desarrollado por DIDCO Technologies. Todos los derechos reservados.
   </footer>
-  
+
 </body>
 </html>
