@@ -11,8 +11,8 @@
       theme: {
         extend: {
           colors: {
-            primary: '#3B0A59', // Morado oscuro inspirado en el logo
-            accent: '#8644A2'   // Morado claro complementario
+            primary: '#3B0A59',
+            accent: '#8644A2'
           },
           backgroundImage: {
             'logo-header': "url('b31ae857-9077-4e36-8d40-b9c0fbf60ede.png')"
@@ -28,10 +28,76 @@
       to { opacity: 1; transform: translateY(0); }
     }
     .animate-fade-in {
-      animation: fade-in 1s ease-out;
+      animation: fade-in 1s ease-out forwards;
     }
     html {
-      scroll-behavior: smooth; /* Scroll suave */
+      scroll-behavior: smooth;
+    }
+    /* Animaciones para secciones */
+    .hidden-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+    .visible-section {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Botones y enlaces feedback */
+    a:hover, a:focus, button:hover, button:focus {
+      outline: none;
+      filter: brightness(1.2);
+      transition: filter 0.3s ease;
+    }
+    /* Menú hamburguesa */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    /* Cuando menú abierto */
+    .hamburger.open div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.open div:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.open div:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      nav ul {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: rgba(59, 10, 89, 0.95);
+        width: 200px;
+        height: calc(100% - 60px);
+        flex-direction: column;
+        padding: 1.5rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        gap: 1.5rem;
+        z-index: 49;
+      }
+      nav ul.open {
+        transform: translateX(0);
+      }
+      nav ul li {
+        text-align: right;
+      }
     }
   </style>
 </head>
@@ -44,19 +110,40 @@
         <img src="b31ae857-9077-4e36-8d40-b9c0fbf60ede.png" alt="Logo DIDCO" class="h-10 w-auto object-contain" />
         <span class="text-2xl font-extrabold text-accent select-none">DIDCO</span>
       </a>
-      <ul class="flex space-x-6 text-white font-semibold">
-        <li><a href="#hero" class="hover:text-accent transition">Inicio</a></li>
-        <li><a href="#que-es" class="hover:text-accent transition">¿Qué es DIDCO?</a></li>
-        <li><a href="#proposito" class="hover:text-accent transition">Propósito</a></li>
-        <li><a href="#como-funciona" class="hover:text-accent transition">¿Cómo funciona?</a></li>
-        <li><a href="#casos-uso" class="hover:text-accent transition">Casos de uso</a></li>
-        <li><a href="#contacto" class="hover:text-accent transition">Contacto</a></li>
+      
+      <!-- Menú desktop -->
+      <ul id="menu" class="hidden md:flex space-x-6 text-white font-semibold">
+        <li><a href="#hero" class="nav-link hover:text-accent transition">Inicio</a></li>
+        <li><a href="#que-es" class="nav-link hover:text-accent transition">¿Qué es DIDCO?</a></li>
+        <li><a href="#proposito" class="nav-link hover:text-accent transition">Propósito</a></li>
+        <li><a href="#como-funciona" class="nav-link hover:text-accent transition">¿Cómo funciona?</a></li>
+        <li><a href="#casos-uso" class="nav-link hover:text-accent transition">Casos de uso</a></li>
+        <li><a href="#sobre-nosotros" class="nav-link hover:text-accent transition">Sobre Nosotros</a></li>
+        <li><a href="#contacto" class="nav-link hover:text-accent transition">Contacto</a></li>
       </ul>
+
+      <!-- Botón hamburguesa móvil -->
+      <div id="hamburger" class="hamburger md:hidden" aria-label="Abrir menú" role="button" tabindex="0">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </nav>
 
+  <!-- Menú móvil -->
+  <ul id="menu-mobile" class="flex flex-col space-y-6 text-white font-semibold md:hidden fixed top-16 right-0 bg-gray-900 bg-opacity-95 backdrop-blur-md w-48 h-[calc(100%-64px)] p-6 transform translate-x-full transition-transform z-40">
+    <li><a href="#hero" class="nav-link hover:text-accent transition block">Inicio</a></li>
+    <li><a href="#que-es" class="nav-link hover:text-accent transition block">¿Qué es DIDCO?</a></li>
+    <li><a href="#proposito" class="nav-link hover:text-accent transition block">Propósito</a></li>
+    <li><a href="#como-funciona" class="nav-link hover:text-accent transition block">¿Cómo funciona?</a></li>
+    <li><a href="#casos-uso" class="nav-link hover:text-accent transition block">Casos de uso</a></li>
+    <li><a href="#sobre-nosotros" class="nav-link hover:text-accent transition block">Sobre Nosotros</a></li>
+    <li><a href="#contacto" class="nav-link hover:text-accent transition block">Contacto</a></li>
+  </ul>
+
   <!-- Hero -->
-  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-logo-header bg-cover bg-center bg-no-repeat bg-gray-900/80 bg-blend-overlay pt-20">
+  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-logo-header bg-cover bg-center bg-no-repeat bg-gray-900/80 bg-blend-overlay pt-20 hidden-section">
     <h1 class="text-6xl md:text-7xl font-extrabold text-accent drop-shadow-lg tracking-wide animate-fade-in">
       DIDCO
     </h1>
@@ -69,19 +156,19 @@
   </section>
 
   <!-- Qué es DIDCO -->
-  <section id="que-es" class="py-20 px-6 bg-gray-900 text-center">
+  <section id="que-es" class="py-20 px-6 bg-gray-900 text-center hidden-section">
     <h2 class="text-3xl font-semibold mb-6">¿Qué es DIDCO?</h2>
     <p class="max-w-2xl mx-auto text-lg">La actividad principal de DIDCO es identificar el estado y la gravedad de los daños en los contenedores a través de un sistema inteligente que escanea imágenes de sus condiciones actuales. Esto permite mayor seguridad, ahorro de tiempo en la programación de citas de vacío (los contenedores llegarán en tiempo y forma) y se evitan rechazos por parte de los propios contenedores.</p>
   </section>
 
   <!-- Propósito -->
-  <section id="proposito" class="py-20 px-6 bg-gray-950 text-center">
+  <section id="proposito" class="py-20 px-6 bg-gray-950 text-center hidden-section">
     <h2 class="text-3xl font-semibold mb-6">Propósito</h2>
     <p class="max-w-2xl mx-auto text-lg">Identificar la gravedad de los daños que presenten los contenedores a través de un sistema inteligente. De esta manera, podríamos saber si los contenedores se presentan en condiciones aptas para futuras operaciones.</p>
   </section>
 
   <!-- Cómo funciona -->
-  <section id="como-funciona" class="py-20 px-6 bg-gray-950">
+  <section id="como-funciona" class="py-20 px-6 bg-gray-950 hidden-section">
     <h2 class="text-3xl font-semibold text-center mb-12">¿Cómo funciona?</h2>
     <div class="grid md:grid-cols-3 gap-8 text-center">
       <div>
@@ -103,7 +190,7 @@
   </section>
 
   <!-- Casos de uso -->
-  <section id="casos-uso" class="py-20 px-6 bg-gray-900 text-center">
+  <section id="casos-uso" class="py-20 px-6 bg-gray-900 text-center hidden-section">
     <h2 class="text-3xl font-semibold mb-8">¿Quién puede usar DIDCO?</h2>
     <div class="grid md:grid-cols-4 gap-6">
       <div class="bg-gray-800 p-6 rounded-xl">
@@ -125,8 +212,33 @@
     </div>
   </section>
 
+  <!-- Sobre Nosotros -->
+  <section id="sobre-nosotros" class="py-20 px-6 bg-gray-950 text-center hidden-section">
+    <h2 class="text-3xl font-semibold mb-8">Sobre Nosotros</h2>
+    <p class="max-w-3xl mx-auto text-lg mb-6">
+      En DIDCO somos un equipo apasionado por la tecnología y la seguridad logística. Nuestro objetivo es revolucionar la inspección de contenedores usando inteligencia artificial para garantizar operaciones más seguras y eficientes.
+    </p>
+    <div class="flex flex-col md:flex-row justify-center gap-8 max-w-4xl mx-auto">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <img src="https://i.pravatar.cc/150?img=1" alt="Foto Juan" class="mx-auto rounded-full mb-4 w-32 h-32 object-cover" />
+        <h3 class="text-xl font-bold mb-2">Juan Pérez</h3>
+        <p>CEO & Fundador</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <img src="https://i.pravatar.cc/150?img=2" alt="Foto María" class="mx-auto rounded-full mb-4 w-32 h-32 object-cover" />
+        <h3 class="text-xl font-bold mb-2">María Gómez</h3>
+        <p>CTO & Líder de IA</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <img src="https://i.pravatar.cc/150?img=3" alt="Foto Luis" class="mx-auto rounded-full mb-4 w-32 h-32 object-cover" />
+        <h3 class="text-xl font-bold mb-2">Luis Martínez</h3>
+        <p>Especialista en Logística</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Contacto -->
-  <section id="contacto" class="py-20 px-6 bg-gray-950 text-center">
+  <section id="contacto" class="py-20 px-6 bg-gray-950 text-center hidden-section">
     <h2 class="text-3xl font-semibold mb-6">Contáctanos</h2>
     <form class="max-w-xl mx-auto space-y-4">
       <input type="text" placeholder="Nombre" class="w-full p-3 rounded bg-gray-800 border border-gray-700" />
@@ -141,6 +253,62 @@
     © 2025 DIDCO. Desarrollado por DIDCO Technologies. Todos los derechos reservados.
   </footer>
 
+  <script>
+    // Toggle menú hamburguesa
+    const hamburger = document.getElementById('hamburger');
+    const menuMobile = document.getElementById('menu-mobile');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      menuMobile.classList.toggle('translate-x-full');
+      menuMobile.classList.toggle('open');
+    });
+
+    // Cerrar menú móvil al hacer clic en un enlace
+    document.querySelectorAll('#menu-mobile a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        menuMobile.classList.add('translate-x-full');
+        menuMobile.classList.remove('open');
+      });
+    });
+
+    // Indicador activo en menú (desktop y móvil)
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function activateMenuOnScroll() {
+      let scrollY = window.pageYOffset;
+
+      sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 80;
+        const sectionId = section.getAttribute('id');
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+          navLinks.forEach(link => {
+            link.classList.remove('text-accent');
+            if(link.getAttribute('href') === '#' + sectionId){
+              link.classList.add('text-accent');
+            }
+          });
+        }
+      });
+    }
+    window.addEventListener('scroll', activateMenuOnScroll);
+
+    // Animaciones con Intersection Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible-section');
+          entry.target.classList.remove('hidden-section');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.hidden-section').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
 
