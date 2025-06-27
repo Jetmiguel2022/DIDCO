@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DIDCO - Inspección Inteligente de Contenedores</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
@@ -20,30 +21,64 @@
       }
     }
   </script>
-  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  <style>
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 1s ease-out;
+    }
+    html {
+      scroll-behavior: smooth; /* Scroll suave */
+    }
+  </style>
 </head>
-<body class="bg-gray-950 text-white font-sans">
+<body class="bg-gray-950 text-white font-[Poppins]">
+
+  <!-- Menú navegación fijo -->
+  <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 backdrop-blur-md z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#hero" class="text-2xl font-extrabold text-accent">DIDCO</a>
+      <ul class="flex space-x-6 text-white font-semibold">
+        <li><a href="#hero" class="hover:text-accent transition">Inicio</a></li>
+        <li><a href="#que-es" class="hover:text-accent transition">¿Qué es DIDCO?</a></li>
+        <li><a href="#proposito" class="hover:text-accent transition">Propósito</a></li>
+        <li><a href="#como-funciona" class="hover:text-accent transition">¿Cómo funciona?</a></li>
+        <li><a href="#casos-uso" class="hover:text-accent transition">Casos de uso</a></li>
+        <li><a href="#contacto" class="hover:text-accent transition">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <!-- Hero -->
-  <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-logo-header bg-cover bg-center bg-no-repeat bg-gray-900/80 bg-blend-overlay">
-    <h1 class="text-5xl font-bold mb-4 text-accent">DIDCO</h1>
-    <p class="text-xl mb-6 max-w-xl text-white">Inspección inteligente de contenedores en tiempo real usando visión artificial</p>
-    <a href="#contacto" class="bg-primary px-6 py-3 rounded-full hover:bg-accent transition">Contáctanos</a>
+  <section id="hero" class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-logo-header bg-cover bg-center bg-no-repeat bg-gray-900/80 bg-blend-overlay pt-20">
+    <h1 class="text-6xl md:text-7xl font-extrabold text-accent drop-shadow-lg tracking-wide animate-fade-in">
+      DIDCO
+    </h1>
+    <p class="text-xl md:text-2xl mt-4 max-w-xl text-white opacity-90 font-light tracking-wide">
+      Inspección inteligente de contenedores en tiempo real usando visión artificial
+    </p>
+    <a href="#contacto" class="mt-8 bg-primary px-6 py-3 rounded-full hover:bg-accent transition font-semibold text-white shadow-md hover:scale-105 duration-300">
+      Contáctanos
+    </a>
   </section>
 
   <!-- Qué es DIDCO -->
-  <section class="py-20 px-6 bg-gray-900 text-center">
+  <section id="que-es" class="py-20 px-6 bg-gray-900 text-center">
     <h2 class="text-3xl font-semibold mb-6">¿Qué es DIDCO?</h2>
     <p class="max-w-2xl mx-auto text-lg">La actividad principal de DIDCO es identificar el estado y la gravedad de los daños en los contenedores a través de un sistema inteligente que escanea imágenes de sus condiciones actuales. Esto permite mayor seguridad, ahorro de tiempo en la programación de citas de vacío (los contenedores llegarán en tiempo y forma) y se evitan rechazos por parte de los propios contenedores.</p>
   </section>
 
   <!-- Propósito -->
-  <section class="py-20 px-6 bg-gray-950 text-center">
+  <section id="proposito" class="py-20 px-6 bg-gray-950 text-center">
     <h2 class="text-3xl font-semibold mb-6">Propósito</h2>
     <p class="max-w-2xl mx-auto text-lg">Identificar la gravedad de los daños que presenten los contenedores a través de un sistema inteligente. De esta manera, podríamos saber si los contenedores se presentan en condiciones aptas para futuras operaciones.</p>
   </section>
 
   <!-- Cómo funciona -->
-  <section class="py-20 px-6 bg-gray-950">
+  <section id="como-funciona" class="py-20 px-6 bg-gray-950">
     <h2 class="text-3xl font-semibold text-center mb-12">¿Cómo funciona?</h2>
     <div class="grid md:grid-cols-3 gap-8 text-center">
       <div>
@@ -65,7 +100,7 @@
   </section>
 
   <!-- Casos de uso -->
-  <section class="py-20 px-6 bg-gray-900 text-center">
+  <section id="casos-uso" class="py-20 px-6 bg-gray-900 text-center">
     <h2 class="text-3xl font-semibold mb-8">¿Quién puede usar DIDCO?</h2>
     <div class="grid md:grid-cols-4 gap-6">
       <div class="bg-gray-800 p-6 rounded-xl">
@@ -94,7 +129,7 @@
       <input type="text" placeholder="Nombre" class="w-full p-3 rounded bg-gray-800 border border-gray-700" />
       <input type="email" placeholder="Correo electrónico" class="w-full p-3 rounded bg-gray-800 border border-gray-700" />
       <textarea rows="4" placeholder="Mensaje" class="w-full p-3 rounded bg-gray-800 border border-gray-700"></textarea>
-      <button class="bg-primary px-6 py-3 rounded-full hover:bg-accent transition">Enviar</button>
+      <button class="bg-primary px-6 py-3 rounded-full hover:bg-accent transition font-semibold text-white shadow-md hover:scale-105 duration-300">Enviar</button>
     </form>
   </section>
 
@@ -102,5 +137,7 @@
   <footer class="py-6 text-center bg-gray-900 text-sm">
     © 2025 DIDCO. Desarrollado por DIDCO Technologies. Todos los derechos reservados.
   </footer>
+
 </body>
 </html>
+
