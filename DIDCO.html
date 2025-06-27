@@ -2,67 +2,45 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DIDCO - Inspección inteligente de contenedores</title>
-
-  <!-- Tailwind CSS CDN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DIDCO - Inspección Inteligente de Contenedores</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome CDN -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-papbPLR4Xp54h+FPLTR+szFwF8YmBTU49SZ2B1P8qih4bfsZXpG+KZOfyE3eKY+HZy7oMjzG6D3XW0LM5QLO8A=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
-  <style>
-    .bg-primary {
-      background-color: #4b0082; /* Morado oscuro */
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B0A59', // Morado oscuro inspirado en el logo
+            accent: '#8644A2'   // Morado claro complementario
+          },
+          backgroundImage: {
+            'logo-header': "url('b31ae857-9077-4e36-8d40-b9c0fbf60ede.png')"
+          }
+        }
+      }
     }
-    .hover\:bg-accent:hover {
-      background-color: #6a0dad;
-    }
-    .text-accent {
-      color: #6a0dad;
-    }
-    .header-bg {
-      background-image: url('b31ae857-9077-4e36-8d40-b9c0fbf60ede.png');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-    }
-  </style>
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 </head>
-
-<body class="bg-gray-950 text-white">
-
-  <!-- Encabezado con fondo de logo -->
-  <section class="header-bg text-center flex flex-col items-center justify-center text-white px-6">
+<body class="bg-gray-950 text-white font-sans">
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-logo-header bg-cover bg-center bg-no-repeat bg-gray-900/80 bg-blend-overlay">
+    <img src="b31ae857-9077-4e36-8d40-b9c0fbf60ede.png" alt="Logo DIDCO" class="w-40 mb-6">
     <h1 class="text-5xl font-bold mb-4 text-accent">DIDCO</h1>
-    <p class="text-xl mb-6 max-w-xl mx-auto">
-      Inspección inteligente de contenedores en tiempo real usando visión artificial
-    </p>
-    <a href="#contacto" class="bg-primary px-6 py-3 rounded-full hover:bg-accent transition inline-block">
-      Contáctanos
-    </a>
+    <p class="text-xl mb-6 max-w-xl text-white">Inspección inteligente de contenedores en tiempo real usando visión artificial</p>
+    <a href="#contacto" class="bg-primary px-6 py-3 rounded-full hover:bg-accent transition">Contáctanos</a>
   </section>
 
-  <!-- ¿Qué es DIDCO? -->
+  <!-- Qué es DIDCO -->
   <section class="py-20 px-6 bg-gray-900 text-center">
     <h2 class="text-3xl font-semibold mb-6">¿Qué es DIDCO?</h2>
-    <p class="max-w-2xl mx-auto text-lg">
-      La actividad principal de DIDCO es identificar el estado y la gravedad de los daños en los contenedores a través de un sistema inteligente que escanea imágenes de sus condiciones actuales. Esto permite mayor seguridad, ahorro de tiempo en la programación de citas de vacío (los contenedores llegarán en tiempo y forma) y se evitan rechazos por parte de los propios contenedores.
-    </p>
+    <p class="max-w-2xl mx-auto text-lg">La actividad principal de DIDCO es identificar el estado y la gravedad de los daños en los contenedores a través de un sistema inteligente que escanea imágenes de sus condiciones actuales. Esto permite mayor seguridad, ahorro de tiempo en la programación de citas de vacío (los contenedores llegarán en tiempo y forma) y se evitan rechazos por parte de los propios contenedores.</p>
   </section>
 
   <!-- Propósito -->
   <section class="py-20 px-6 bg-gray-950 text-center">
     <h2 class="text-3xl font-semibold mb-6">Propósito</h2>
-    <p class="max-w-2xl mx-auto text-lg">
-      Identificar la gravedad de los daños que presenten los contenedores a través de un sistema inteligente. De esta manera, podríamos saber si los contenedores se presentan en condiciones aptas para futuras operaciones.
-    </p>
+    <p class="max-w-2xl mx-auto text-lg">Identificar la gravedad de los daños que presenten los contenedores a través de un sistema inteligente. De esta manera, podríamos saber si los contenedores se presentan en condiciones aptas para futuras operaciones.</p>
   </section>
 
   <!-- Cómo funciona -->
@@ -125,6 +103,5 @@
   <footer class="py-6 text-center bg-gray-900 text-sm">
     © 2025 DIDCO. Desarrollado por DIDCO Technologies. Todos los derechos reservados.
   </footer>
-
 </body>
 </html>
